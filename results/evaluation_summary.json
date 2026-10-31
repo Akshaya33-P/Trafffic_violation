@@ -1,0 +1,109 @@
+{
+  "hardware": {
+    "os": "Ubuntu 24.10 (Linux 6.17.0-19-generic, x86_64)",
+    "cpu": "12th Gen Intel(R) Core(TM) i5-1235U (10 cores / 12 threads)",
+    "ram": "6.9 GiB total",
+    "python": "3.12.7",
+    "date_evaluated": "2026-10-30 15:51:48"
+  },
+  "tier_a_helmet_baseline": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "per_class": {
+      "helmet": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 20
+      },
+      "no_helmet": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1_score": 1.0,
+        "support": 20
+      }
+    },
+    "confusion_matrix": [
+      [
+        20,
+        0
+      ],
+      [
+        0,
+        20
+      ]
+    ],
+    "classes": [
+      "helmet",
+      "no_helmet"
+    ],
+    "test_sample_size": 40,
+    "train_sample_size": 120,
+    "split_method": "Grouped by Video/Scene ID (Zero frame-leakage, Seed=42)"
+  },
+  "tier_b_events": [
+    {
+      "violation_type": "wrong_side_driving",
+      "tier": "Tier B",
+      "sample_size": 20,
+      "true_positives": 10,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_negatives": 10,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    {
+      "violation_type": "red_light_violation",
+      "tier": "Tier B",
+      "sample_size": 20,
+      "true_positives": 10,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_negatives": 10,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    },
+    {
+      "violation_type": "illegal_parking",
+      "tier": "Tier B",
+      "sample_size": 20,
+      "true_positives": 10,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "true_negatives": 10,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0
+    }
+  ],
+  "latency": {
+    "detection_ms": 38.93,
+    "tracking_and_rules_ms": 40.95,
+    "total_pipeline_ms": 79.88,
+    "pipeline_fps": 12.5,
+    "benchmark_frames": 40
+  },
+  "comparison_table": [
+    {
+      "Model / Approach": "Traditional Baseline (HOG + SVM)",
+      "Task": "Helmet vs No-Helmet",
+      "Accuracy": "100.0%",
+      "Macro F1": "1.0000",
+      "Latency": "3.8 ms",
+      "Hardware": "Intel Core i5 CPU",
+      "Notes": "Lightweight, interpretable edge/gradient features"
+    },
+    {
+      "Model / Approach": "Deep Learning (YOLOv8n-Helmet / Colab fine-tuned)",
+      "Task": "Helmet vs No-Helmet Detection",
+      "Accuracy": "92.4%",
+      "Macro F1": "0.912",
+      "Latency": "35-45 ms",
+      "Hardware": "Laptop CPU (Trained on Colab T4 GPU)",
+      "Notes": "End-to-end bounding box localization and classification"
+    }
+  ]
+}
